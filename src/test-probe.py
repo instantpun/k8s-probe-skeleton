@@ -79,4 +79,12 @@ with kubernetes.client.ApiClient(configuration) as api_client:
     # most V1CoreApi objects and child objects, like V1Secret, have a .to_dict() method for easy conversion
     secret = secret.to_dict()
 
+    # suppose the k8s secret has data fields called 'ca.crt' and 'token'
+    # we can just access them normally like so:
+    encoded_ca_crt = secret['data']['ca.crt']
+    decoded_ca_crt = base64.standard_b64decode( encoded_ca_crt) # All secret data returned from the apiserver is base64 encoded
+    encoded_token = secret['data']['token']
+    decoded_token = base64.standard_b64decode( encoded_token )
+
+
     ####> SAMPLE CUSTOM API CALL <####
