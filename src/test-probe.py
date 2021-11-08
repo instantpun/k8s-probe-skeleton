@@ -15,7 +15,7 @@ APISERVER_HOST = os.environ.get('KUBERNETES_SERVICE_HOST')
 APISERVER_PORT = os.environ.get('KUBERNETES_SERVICE_PORT_HTTPS')
 
 if APISERVER_HOST and APISERVER_PORT:
-    raise ValueError, "ERROR: Unable to determine URL for kubernetes apiserver. Host or port is missing."
+    raise ValueError("ERROR: Unable to determine URL for kubernetes apiserver. Host or port is missing.")
 
 #### User-defined Environment Variables #####
 if os.environ.get('LOG_LEVEL'):
